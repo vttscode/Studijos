@@ -1,5 +1,5 @@
 function hi(){
-   console.log(' Hi JavaScript', this) 
+   console.log(' Hi JavaScript') 
 }
 
 const person = {

@@ -1,33 +1,36 @@
 function hi(){
-   console.log(' Hi JavaScript', this) 
-}
+    console.log(' Hi JavaScript', this) 
+ }
 
 const person = {
     name:'Maximus',
-    sayHi:hi
+    sayHi:hi, //this === Object person
+    hiWindow:hi.bind(Window),  //this === Object Window
+    hiWindowThis:hi.bind(this),  //this === Object Window
+    hiDocument:hi.bind(Document),  //this === Object Document
+    logInfo(job,level){
+        console.group(`${this.name} info:`)
+        console.log(`name is: ${this.name} `)
+        console.log(`job is: ${job} `)
+        console.log(`level is: ${level} `)
+        console.groupEnd()
+
+        }
+    }
+
+person.logInfo('front','senior')
+
+const person2 = {
+    name : 'Jane'
 }
-// same how person
-const person1 = new Object({
-    name:'Maxi',
-    sayHi:hi
-} )
-// person2 with person prototype
-const person2 = Object.create(person)
-console.log(person2.name)  //Maximus
-person2.name = 'John'
-console.log(person2.name)  //John
 
-//I can add prototype mehtod
-Object.prototype.hello = function(){
-    console.log(' Hello prototype')
+person.logInfo.bind(person2,'back','junior')()
+person.logInfo.call(person2,'back','mid','not used')
+person.logInfo.apply(person2,['back','senior'])
+
+const arr = [1,2,3]
+
+Array.prototype.multBy = function(n){
+    return this.map(i=> i*n)
 }
-
-
-const number= new Number('42')
-const number2= new Number(42)
-const number1= 42
-let x
-let bool =true
-let bool1 =new Boolean(true)
-const str='42'
-const str1=new String('42')
+console.log(arr.multBy(3))
