@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizzeria</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Pizzeria</h1>
+    </header>
+
+    <div class="form" >
+        <label>Enter and add pizza:</label>
+        <form  id="form">
+            <input type="text" placeholder="Name" id="name" name="name" required maxlength="30"><br>
+            <input type="number" placeholder="Price" id="price" required step="0.01" min="0.01"><br>
+            <input type="number" placeholder="Heat" id="heat" min="1" max="3"><br>
+            <input type="text" placeholder="Toppings" id="toppings" required><br>
+            <select name="photos" id="photos">
+                <option disabled selected value>Select photo</option>
+                <option value="margarita">margarita</option>
+                <option value="neapolitan">neapolitan</option>
+                <option value="california">california</option>
+            </select><br>
+            <button type="submit" id="addPizza">Add pizza</button>
+        </form>
+    
+    </div>
+
+    <div class="delete">
+        <button id="deletePizza" onclick="deletePizza()">Delete pizza</button>
+        
+    </div>
+
+    <div class="sort">    
+        <span>Sort by</span><br>
+        <select id="sortBy">
+            <option disabled selected value>Select</option>
+            <option value="Price">Price</option>
+            <option value="Heat">Heat</option>
+        </select>
+    </div>
+
+    <h2>Pizza menu:</h2>
+    <div class="menu" >
+        <ul >
+            <li   id="pizzaList"></li>
+        </ul>
+    </div>
+
+</body>
+<script src="scripts/app.js"></script>
+</html>
